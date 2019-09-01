@@ -4,7 +4,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+let router =  new Router({
   routes: [
     {
       path: '/',
@@ -19,7 +19,26 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: () => import('@/pages/home/Home')
+      component: () => import('@/pages/home/Home'),
+      children: [
+        {
+          path: '/computed',
+          name: 'home.computed',
+          component: () => import('@/pages/computed/Computed'),
+        },
+        {
+          path: '/assets',
+          name: 'home.computed',
+          component: () => import('@/pages/assets/Assets'),
+        }
+      ]
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  //路由守卫，可用于做权限校验
+  next();
+})
+
+export default router;

@@ -3,7 +3,8 @@
     <el-container>
       <el-aside width="200px">
         <!-- 菜单 -->
-        Aside
+        <div @click="toComputedCenter">计算中心</div>
+        <div @click="toAssitsCenter">资源中心</div>
       </el-aside>
       <el-container>
         <el-header>
@@ -12,12 +13,32 @@
         </el-header>
         <el-main>
           <!-- 主体显示区 -->
-          Main
+          <router-view/>
         </el-main>
       </el-container>
     </el-container>
   </section>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+    toComputedCenter () {
+      //路由跳转
+      this.$router.push('/computed')
+    },
+    toAssitsCenter () {
+      //路由跳转
+      this.$router.push('/assets')
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
   .home-page {
